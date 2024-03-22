@@ -73,9 +73,8 @@ jobs:
           path: bin/Release/net8.0/publish/output/*
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: Version ${{ github.ref }}
+          name: Auto build ${{ github.ref }}
           body_path: CHANGELOG.md
           files: |
             bin/Release/net8.0/publish/output/*
