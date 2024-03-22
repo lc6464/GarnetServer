@@ -71,20 +71,11 @@ jobs:
         with:
           name: GarnetServer
           path: bin/Release/net8.0/publish/output/*
-      - name: Get current time
-        shell: pwsh
-        id: date
-        run: Write-Output "::set-output name=time::" + [DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss")
       - name: Release
-        uses: softprops/action-gh-release@v2
         if: ${{ github.ref_type == 'branch' }}
-        with:
-          name: Auto build ${{ steps.date.outputs.time }}
-          tag_name: ${{ steps.date.outputs.time }}
-          prerelease: true
-          body_path: CHANGELOG.md
-          files: |
-            bin/Release/net8.0/publish/output/*
+        shell: pwsh
+        run: |
+          gh release create "autobuild-$([DateTime]::UtcNow.ToString("yyyy-MM-dd-HH-mm-ss"))" --target "main" --title "Auto build $([DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))" bin/Release/net8.0/publish/output/*
       - name: Release
         uses: softprops/action-gh-release@v2
         if: ${{ github.ref_type == 'tags' }}
