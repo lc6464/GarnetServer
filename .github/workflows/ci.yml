@@ -74,8 +74,10 @@ jobs:
       - name: Release
         if: ${{ github.ref_type == 'branch' }}
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "autobuild-$([DateTime]::UtcNow.ToString("yyyy-MM-dd-HH-mm-ss"))" --target "main" --title "Auto build $([DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))" bin/Release/net8.0/publish/output/*
+          gh release create "autobuild-$([DateTime]::UtcNow.ToString("yyyy-MM-dd-HH-mm-ss"))" -F CHANGELOG.md -p --title "Auto build $([DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))" bin/Release/net8.0/publish/output/*
       - name: Release
         uses: softprops/action-gh-release@v2
         if: ${{ github.ref_type == 'tags' }}
