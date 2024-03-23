@@ -78,7 +78,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd bin/Release/net8.0/publish/output
-          gh release create "autobuild-$([DateTime]::UtcNow.ToString("yyyy-MM-dd-HH-mm-ss"))" -F CHANGELOG.md -p --title "Auto build $([DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))" win-x64-based-readytorun.zip win-arm64-based-readytorun.zip linux-x64-based.tar.xz linux-arm64-based.tar.xz osx-x64-based.tar.xz osx-arm64-based.tar.xz
+          gh release create "autobuild-$([DateTime]::UtcNow.ToString("yyyy-MM-dd-HH-mm-ss"))" -F ../../../../../CHANGELOG.md -p --title "Auto build $([DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))" win-x64-based-readytorun.zip win-arm64-based-readytorun.zip linux-x64-based.tar.xz linux-arm64-based.tar.xz osx-x64-based.tar.xz osx-arm64-based.tar.xz
       - name: Release
         uses: softprops/action-gh-release@v2
         if: ${{ github.ref_type == 'tags' }}
