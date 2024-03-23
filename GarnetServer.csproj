@@ -16,4 +16,10 @@
 		<Using Include="Garnet" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Update="garnet.conf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
 </Project>

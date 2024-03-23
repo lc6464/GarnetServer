@@ -4,6 +4,8 @@ GarnetServer is a sleek, easy-to-use console app that lets you run [Microsoft.Ga
 
 It skips the Docker setup, making it super simple to get [Microsoft.Garnet](https://github.com/microsoft/garnet) up and running. GarnetServer focuses on being easy, flexible, and a top-notch caching solution for any app, kind of like Redis.
 
+Most codes are from [main/GarnetServer in Microsoft.Garnet](https://github.com/microsoft/garnet/tree/main/main/GarnetServer).
+
 ## Features
 
 - **High Performance**: Built for speed, GarnetServer is the go-to for making your apps run faster with efficient caching.
